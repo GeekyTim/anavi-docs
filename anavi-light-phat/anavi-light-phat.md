@@ -162,7 +162,7 @@ ANAVI Light pHAT requires two power supplies:
 * 5V power supply for the Raspberry Pi
 
 
-ANAVI Light pHAT has been tested using 12V power supplies from SUNNY Computer Technology Europe such as [SYS1530-1212-W2E](https://www.sunny-euro.com/en/products/sys1530-1212-w2e-europe-2-1x5-5x11-s-2wc-1-4m-4-5ft). The output current depends on the leght of the RGB LED strip and the number of LEDs in it. ANAVI Light pHAT has been tested with power supplies with output current in the range from 1A to 5A. Using power supplies and RGB LED stip that requires higher output current than 5A is not recommended. Make sure that you are using a 12V power supply from a trusted supplier. Cheap, untested power supplies can be risky and unreliable.
+ANAVI Light pHAT has been tested using 12V power supplies from SUNNY Computer Technology Europe such as [SYS1530-1212-W2E](https://www.sunny-euro.com/en/products/sys1530-1212-w2e-europe-2-1x5-5x11-s-2wc-1-4m-4-5ft). The output current depends on the length of the RGB LED strip and the number of LEDs in it. ANAVI Light pHAT has been tested with power supplies with output current in the range from 1A to 5A. Using power supplies and RGB LED stip that requires higher output current than 5A is not recommended. Make sure that you are using a 12V power supply from a trusted supplier. Cheap, untested power supplies can be risky and unreliable.
 
 It is recommended to use the [official Raspberry Pi Power Supply](https://www.raspberrypi.org/products/universal-power-supply/) or another 2.5A USB power supply from reputable retailer to power the Raspberry Pi.
 
