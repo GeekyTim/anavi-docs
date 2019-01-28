@@ -102,22 +102,23 @@ ANAVI Light pHAT supports PIR motion sensor. The officially supported I2C sensor
 
 You may also attach any other I2C sensors but you will have to take care of their software integration.
 
-#### Temperature Sensor
+#### Light Sensor
 
-The official temperature sensor for ANAVI Light pHAT is BMP180. This is I2C sensor capable of measuring both temperature and barometric pressure.
+The official light I2C sensor for ANAVI Light pHAT is BH1750.
 
-Using 4 Dupont jumper wires connect BMP180 to one of the 5 I2C slots on ANAVI Light pHAT as follows:
+Using 4 Dupont jumper wires connect BH1750 to one of the 5 I2C slots on ANAVI Light pHAT as follows:
 
-| BMP180   | ANAVI Light pHAT |
+| BH1750   | ANAVI Light pHAT |
 | -------- |:-------------- |
-| VIN      | 3.3V           |
+| VCC      | 3.3V           |
 | GND      | GND            |
 | SCL      | SCL            |
 | SDA      | SDA            |
 
-#### Humidity Sensor
 
-The official humidity temperature for ANAVI Light pHAT is HTU21 (SHT21). This is I2C sensor capable of measuring both humidity and temperature.
+#### Temperature & Humidity Sensor
+
+The official temperature and humidity sensor for ANAVI Light pHAT is HTU21 (SHT21). This is I2C sensor capable of measuring both humidity and temperature.
 
 Using 4 Dupont jumper wires connect HTU21 to one of the 5 I2C slots on ANAVI Light pHAT as follows:
 
@@ -130,13 +131,26 @@ Using 4 Dupont jumper wires connect HTU21 to one of the 5 I2C slots on ANAVI Lig
 
 #### Light Sensor
 
-The official light I2C sensor for ANAVI Light pHAT is BH1750.
+The official I2C sensor for RGB color and gesture detection on ANAVI Ligth pHAT is APDS-9960.
 
-Using 4 Dupont jumper wires connect BH1750 to one of the 5 I2C slots on ANAVI Light pHAT as follows:
+Using 4 Dupont jumper wires connect APDS-9960 to one of the 5 I2C slots on ANAVI Light pHAT as follows:
 
-| BH1750   | ANAVI Light pHAT |
+| APDS-9960  | ANAVI Light pHAT |
+| ---------- |:-------------- |
+| VIN        | 3.3V           |
+| GND        | GND            |
+| SCL        | SCL            |
+| SDA        | SDA            |
+
+#### Temperature & Barometric Pressure Sensor
+
+The official temperature and barometric pressure sensor for ANAVI Light pHAT is BMP180. This is I2C sensor capable of measuring both temperature and barometric pressure.
+
+Using 4 Dupont jumper wires connect BMP180 to one of the 5 I2C slots on ANAVI Light pHAT as follows:
+
+| BMP180   | ANAVI Light pHAT |
 | -------- |:-------------- |
-| VCC      | 3.3V           |
+| VIN      | 3.3V           |
 | GND      | GND            |
 | SCL      | SCL            |
 | SDA      | SDA            |
@@ -218,7 +232,7 @@ sudo raspi-config
 
 * Type in the following command on your computer if you are using GNU/Linux distribution to access ANAVI Light pHAT. Alternatively if your OS is Microsoft Windows use [putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
-The recommended USB to serial cable for ANAVI Light pHAT is [Olimex USB-Serial-Cable-F](https://www.olimex.com/Products/Components/Cables/USB-Serial-Cable/USB-Serial-Cable-F/).
+The recommended USB to UART serial modules for ANAVI Light pHAT are any with CP2102 or [Olimex USB-Serial-Cable-F](https://www.olimex.com/Products/Components/Cables/USB-Serial-Cable/USB-Serial-Cable-F/). All Light kits include CP2102 module which out of the box on GNU/Linux distributions. Drivers for MS Windows and Mac OS X are [available at silabs.com](https://www.silabs.com/products/development-tools/software/usb-to-uart-bridge-vcp-drivers).
 
 ## Examples
 
@@ -267,7 +281,76 @@ It is mandatory to enable **I2C** to use most of the sensors supported by ANAVI 
 
 #### PIR Motion Sensor
 
-#### Color and Gesture Recognition Sensor (APDS-9960) 
+Follow the steps below to use the PIR motion sensor sensor with ANAVI Light pHAT:
+
+* Connect 5V, GND and OUT of the PIR motion sensor to ANAVI Light pHAT.
+
+* Adjust timing and sensitivity of the sensor through the hardware potentiometers on it.
+
+* Type in the following commands to run the sample Python application:
+
+```
+python ~/anavi-examples/sensors/PIR-sensor/python/motion.py
+```
+
+* Move your hand infront of the PIR motion sensor and verify that the movement is detected in the output, for example:
+
+```
+Motion detected:  1
+Motion detected:  2
+Motion detected:  3
+```
+
+#### Color and Gesture Recognition Sensor (APDS-9960)
+
+Follow the steps below to use the APDS-9960 I2C color and gesture recognition sensor with ANAVI Light pHAT:
+
+* Connect APDS-9960 to any of the I2C slots on ANAVI Light pHAT using male to female Duport jumper wire.
+
+* Type in the following command and verify that the address of the sensor is listed:
+
+```
+sudo i2cdetect -y 1
+```
+
+* Type in the following commands to build and run the sample application for detecting colors:
+
+```
+cd ~/anavi-examples/sensors/APDS-9960/c++/
+make color
+./color
+```
+
+* Verify that the output is similar to (the exact values depend on color of the lights around the sensor):
+
+```
+------------------------------------
+APDS-9960 - ColorSensor  
+------------------------------------
+Ambient: 108 Red: 44 Green: 34 Blue: 22
+Ambient: 109 Red: 45 Green: 34 Blue: 22
+Ambient: 121 Red: 49 Green: 38 Blue: 26
+```
+
+* Type in the following commands to build and run the sample application for detecting gestures:
+
+```
+cd ~/anavi-examples/sensors/APDS-9960/c++/
+make gesture
+./gesture
+```
+
+* Verify that the output is similar to (the exact values depend on color of the lights around the sensor):
+
+```
+------------------------------------
+ APDS-9960 - GestureTest  
+------------------------------------
+NEAR
+UP
+RIGHT
+UP
+```
 
 #### Temperature Sensor (BMP180)
 
