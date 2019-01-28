@@ -314,6 +314,11 @@ Yes, ANAVI Thermometer is compatible with Arduino IDE. You can easily upload you
 
 Buy any of the available perks, get your hands on the ANAVI Thermometer, contribute to our GitHub repositories, and become part of our open source community!
 
+#### What Ardiono Libraries do I need to add to the Arduino IDE to compile the example code?
+
+Use the search option in Manage Libries to install the following libraries:
+
+. 
 
 ---
 
@@ -324,6 +329,7 @@ Buy any of the available perks, get your hands on the ANAVI Thermometer, contrib
 | Date              | Changes                     | Modified pages  | Author          |
 | ----------------- |:---------------------------:| :---------------| :---------------|
 | 24 January 2019   | Initial        release      | All             | Leon Anavi      |
+| 28 January 2019   | Added list of libraries     | FAQ             | Tim Richardson  |
 
 ## ANAVI Thermometer Revision
 
